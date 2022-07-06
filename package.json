@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "dom-to-image": "^2.6.0",
+    "vcolorpicker": "^1.1.0",
     "vue": "^3.2.25",
+    "vue-native-color-picker": "^1.2.0",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {

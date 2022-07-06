@@ -116,7 +116,8 @@ function addLine() {
 }
 
 function minusLine() {
-  state.lines.pop()
+  // TODO: 获取更改后的lines的data并将其退回到pool中
+  console.log(state.lines.pop())
 }
 
 function download() {
