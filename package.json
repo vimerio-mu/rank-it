@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "dom-to-image": "^2.6.0",
+    "element-plus": "^2.2.8",
     "vcolorpicker": "^1.1.0",
     "vue": "^3.2.25",
     "vue-native-color-picker": "^1.2.0",
@@ -19,6 +20,7 @@
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.4",
+    "unplugin-element-plus": "^0.4.1",
     "vite": "^2.9.9"
   }
 }

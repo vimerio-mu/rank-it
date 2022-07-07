@@ -69,27 +69,27 @@ const state = reactive({
   lines:[
     {
       name:'S',
-      color:'bg-red-400',
+      color:'#ef4444',
       data:[]
     },
     {
       name:'A',
-      color:'bg-orange-400',
+      color:'#f97316',
       data:[]
     },
     {
       name:'B',
-      color:'bg-amber-400',
+      color:'#f59e0b',
       data:[]
     },
     {
       name:'C',
-      color:'bg-yellow-300',
+      color:'#facc15',
       data:[]
     },
     {
       name:'D',
-      color:'bg-lime-400',
+      color:'#a3e635',
       data:[]
     },
   ],
