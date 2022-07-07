@@ -43,19 +43,21 @@
 
     <div class="bg-white shadow-xl rounded-xl shadow-indigo-500/50 my-4 py-4 pl-4 pr-8 relative">
       <Line 
-      color="bg-black "
+      color=""
       name="Pool"
       :data="state.pool"
       />
-      <div class="absolute bottom-1/2 translate-y-1/2 right-2">
+      <div class="absolute bottom-1/2 translate-y-1/2 right-2 z-20">
         <button 
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
-        transition duration-500 ease transform hover:scale-125 hover:-rotate-360">
+        transition duration-500 ease transform hover:scale-125 hover:-rotate-360"
+        @click="upload">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
           </svg>
         </button>
       </div>
+      <input id="file" type="file" accept="image/*" class=" opacity-0 absolute bottom-1/2 translate-y-1/2 right-2 w-12 h-12 z-0" @change="getFile">
     </div>
   </div>
 </template>
@@ -69,43 +71,32 @@ const state = reactive({
   lines:[
     {
       name:'S',
-      color:'#ef4444',
+      color:'#4338ca',
       data:[]
     },
     {
       name:'A',
-      color:'#f97316',
+      color:'#4f46e5',
       data:[]
     },
     {
       name:'B',
-      color:'#f59e0b',
+      color:'#6366f1',
       data:[]
     },
     {
       name:'C',
-      color:'#facc15',
+      color:'#818cf8',
       data:[]
     },
     {
       name:'D',
-      color:'#a3e635',
+      color:'#a5b4fc',
       data:[]
     },
   ],
-  pool:[
-      { id: 1, name: 'china1', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.2Hu-9DWUnrhQ246iYrmWWAHaE8?w=232&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 2, name: 'china2', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.hucNc0ssxrBpM7IBTLkx5gHaE7?w=233&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 3, name: 'china3', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.0b45bmWlDQXh_ClNfbwUxAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 4, name: 'china4', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.FX31vvE8qUeNMi1ZrDeaygEsDI?w=232&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 5, name: 'china5', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.0b45bmWlDQXh_ClNfbwUxAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 6, name: 'china6', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.0b45bmWlDQXh_ClNfbwUxAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 7, name: 'china7', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.2Hu-9DWUnrhQ246iYrmWWAHaE8?w=232&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 8,  src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.hucNc0ssxrBpM7IBTLkx5gHaE7?w=233&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-      { id: 9, name: 'china9', src: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.0b45bmWlDQXh_ClNfbwUxAHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.24&pid=1.7'},
-  ]
+  pool:[]
 })
-
 function addLine() {
   state.lines.push(
     {
@@ -131,6 +122,30 @@ function download() {
     .catch(function (error) {
         alert('出现错误，无法下载', error);
     })
+}
+
+function upload() {
+  let file = document.querySelector('#file');
+  file.click();
+}
+
+function getFile(e) {
+  console.log(`文件名称：${e.target.value}`);
+  // 使用fileReader来读取文件，绕过浏览器安全策略
+  let input = document.querySelector('#file');
+	let fileReader=new FileReader(),fileType=input.files[0].type;
+  let lastId = state.pool[state.pool.length - 1] ? state.pool[state.pool.length - 1].id + 1 : 0
+	fileReader.onload=function(){
+		if(/^image\/[jpg|png|gif]/.test(fileType)){
+			  state.pool.push({
+      id:lastId,
+      src:this.result
+    })
+		}
+	}
+	console.log(input.files[0]);
+	//base64方式读取：图片等文件通用读取方式
+	fileReader.readAsDataURL(input.files[0]);
 }
 </script>
 
