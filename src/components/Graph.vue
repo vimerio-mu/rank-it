@@ -1,8 +1,12 @@
 <template>
   <div class="flex flex-col col-span-12">
     <div class="bg-white shadow-xl rounded-xl shadow-indigo-500/50 mt-8 mb-4 pt-4 pb-8 pl-4 pr-8 relative">
+      <div class="bg-white rounded-xl h-16 w-56 absolute -top-12 left-0 z-0">
+        <input type="text" class=" text-indigo-500 font-bold text-2xl h-12 w-56 rounded-xl text-center" v-model="state.name" />
+      </div>
       <draggable 
       id = 'graph'
+      class="z-10"
       v-model="state.lines" 
       :sort="true"
       group="line"
@@ -72,30 +76,31 @@ import draggable from "vuedraggable";
 import domtoimage from 'dom-to-image';
 import { ref, reactive } from "vue";
 const state = reactive({
+  name:'图表标题',
   lines:[
     {
       name:'S',
-      color:'#4338ca',
+      color:'#b454fd',
       data:[]
     },
     {
       name:'A',
-      color:'#4f46e5',
-      data:[]
-    },
-    {
-      name:'B',
       color:'#6366f1',
       data:[]
     },
     {
+      name:'B',
+      color:'#4b8dfe',
+      data:[]
+    },
+    {
       name:'C',
-      color:'#818cf8',
+      color:'#04c6e2',
       data:[]
     },
     {
       name:'D',
-      color:'#a5b4fc',
+      color:'#02deba',
       data:[]
     },
   ],
@@ -119,7 +124,7 @@ function download() {
   domtoimage.toPng(document.getElementById('graph'))
     .then(function (dataUrl) {
         var link = document.createElement('a');
-        link.download = 'my-graph.png';
+        link.download = `${state.name}.png`;
         link.href = dataUrl;
         link.click();
     })

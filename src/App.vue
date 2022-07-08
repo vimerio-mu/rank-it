@@ -9,7 +9,7 @@ import Output from './components/Output.vue'
 <template>
   <!-- <Header /> -->
   <div class=" container grid grid-cols-12 bg-blue-100 px-4">
-    <Graph />
+    <Graph class="mt-12"/>
     <!-- <Settings /> -->
     <!-- <Test /> -->
   </div>
