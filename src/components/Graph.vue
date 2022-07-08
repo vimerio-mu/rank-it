@@ -14,15 +14,17 @@
       </draggable>
       <div class="absolute bottom-1/2 translate-y-1/2 right-2" @click="download()">
         <button
+        title="下载为图片"
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
         transition duration-500 ease transform hover:scale-125 hover:rotate-360">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
         </button>
       </div>
       <div class="absolute left-1/2 translate-y-1/2 bottom-8" @click="addLine()">
         <button 
+        title="增加列"
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
         transition duration-500 ease transform hover:scale-125 hover:rotate-360">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -32,6 +34,7 @@
       </div>
       <div class="absolute left-1/2 translate-y-1/2 translate-x-full bottom-8" @click="minusLine()">
         <button 
+        title="减少列"
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
         transition duration-500 ease transform hover:scale-125 hover:rotate-360">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -51,6 +54,7 @@
         <button 
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
         transition duration-500 ease transform hover:scale-125 hover:-rotate-360"
+        title="上传图片"
         @click="upload">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
