@@ -1,7 +1,37 @@
-# Vue 3 + Vite
+# 在线网址
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+https://vimerio-mu.github.io/rank-it/
 
-## Recommended IDE Setup
+# 这是什么
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+这是一个可以在线制作排名图片的网站。
+
+简单的来说就是你提供图片，拖动它们到你认为的排名位置，最后将图表下载为图片。
+
+同时你可以对①标题；②行数；③行名；④行颜色；⑤整体配色方案进行定制
+
+这是一个非常简单的项目，因为从一开始我就想尽可能保持简单。
+
+# 为什么不是Tiermaker
+
+首先承认，本项目受[tiermaker](https://tiermaker.com/)的启发很多，本项目从一开始就是因为使用了tiermaker才产生开发想法的。
+
+那么为什么不是tiermaker呢？
+
+首先就是网络问题，使用tiermaker由于众所周知的原因会出现图片上传失败、卡顿，甚至完全无法连接的情况。从这个角度来讲，这就是中国局域网的tiermaker替代品。
+
+但是本项目在tiermaker的基础上也进行了一些我个人认为的升级：
+
+① tiermaker的页面过于杂乱和粗犷，不符合很多人的审美。
+
+② tiermaker的交互逻辑我不是很满意，尤其是增减列以及调整颜色，比较麻烦
+
+③ tiermaker并没有提供配色方案，需要自己手动配色
+
+## 其他信息
+
+感谢我的室友CG同学对本项目的帮助，作为产品经理和配色方案的设计师。
+
+感兴趣的可以在豆瓣关注他：[消亡之人](https://www.douban.com/people/197870360/)
+
+如果你不嫌烦的话，可以给这个项目一颗星，愿starlight照亮你我。
