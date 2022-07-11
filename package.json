@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.6",
     "dom-to-image": "^2.6.0",
     "element-plus": "^2.2.8",
+    "esbuild-windows-64": "^0.14.48",
     "vcolorpicker": "^1.1.0",
     "vue": "^3.2.25",
     "vue-native-color-picker": "^1.2.0",

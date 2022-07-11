@@ -11,6 +11,7 @@ module.exports = {
       },
       minWidth: {
         '28': '7rem',
+        '56': '14rem'
       },
       rotate: {
         '360': '360deg',

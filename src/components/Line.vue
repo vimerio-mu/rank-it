@@ -1,8 +1,9 @@
 <template>
   <div class=" min-h-28 flex flex-row">
     <div contenteditable="true" ref="container"
-    class="relative w-44 min-h-28 text-center text-3xl text-white flex items-center justify-center border-1 border-black overflow-hidden" >
+    class="relative w-44 min-h-28 text-center text-3xl text-white flex items-center justify-center border-1 border-black overflow-hidden outline-none" >
       <span class=" overflow-hidden">{{name}}</span>
+      <!-- 颜色选择器 -->
       <button class="absolute -bottom-6 -right-6 duration-500 hover:bottom-0 hover:right-0 " >
         <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-500 p-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -31,7 +32,7 @@
 
 <script >
 import Item from './Item.vue'
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, onUpdated, reactive, ref } from 'vue'
 import draggable from "vuedraggable";
 import { ElColorPicker } from 'element-plus'
 export default {
@@ -73,6 +74,10 @@ export default {
       output = true
       container.value.style.backgroundColor = ` ${props.color ? props.color : '#000000'} `;
       })
+    onUpdated(() => {
+      output = true
+      container.value.style.backgroundColor = ` ${props.color ? props.color : '#000000'} `;
+    })
     function setColor(value) {
       console.log(value)
       console.log(container.value.style)

@@ -1,6 +1,9 @@
 <template>
-  <div ref="container" class=" rounded-full aspect-square h-8 w-8 mx-1">
-
+  <div 
+  ref="container" 
+  class=" rounded-full aspect-square h-8 w-8 mx-1"
+  :title="color"
+  >
   </div>
 </template>
 
@@ -13,7 +16,9 @@ export default {
   },
   setup(props) {
     const container = ref(null)
-    onMounted(() => container.value.className += ` ${props.color ? props.color : 'bg-black'} `)
+    onMounted(() => {
+      container.value.style.backgroundColor = ` ${props.color ? props.color : '#000000'} `;
+    })
     return {
       container
     } 
