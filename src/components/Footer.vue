@@ -48,7 +48,7 @@ import { ElDrawer } from 'element-plus';
 import avatarUrl from '/avatar.jpg'
 import githubUrl from '/github.png'
 const state = reactive({
-  openDrawer: false,
+  openDrawer: true,
 })
 
 function info() {
