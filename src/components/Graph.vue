@@ -11,7 +11,7 @@
         </button>
     </div>
     <!-- 色卡弹出对话框 -->
-    <el-dialog v-model="colorSwatch.open" title="色卡选择"  class=" text-indigo-500">
+    <el-dialog v-model="colorSwatch.open" title="色卡选择">
       <el-table :data="colorSwatch.swatchs">
         <el-table-column property="name" label="名称" class=" text-indigo-500"/>
         <el-table-column property="colors" label="色号">
@@ -34,19 +34,12 @@
       </el-table>
     </el-dialog>
     <!-- 标题 -->
-    <!-- TODO: 需不需要做成抽拉样式，用户刚进来会不会不知道标题设置？ -->
+    <!-- 奇技淫巧：用span的min-width撑开父元素，并设置内容和input一样，里面的input设置的width:100%就可以随内容撑大 -->
     <div class="absolute top-4 left-0 z-0 hover:-top-4 duration-500">
       <span class="min-w-56 inline-block text-center font-bold text-2xl px-8">{{state.name}}</span>
       <input type="text" class=" text-indigo-500 font-bold text-2xl h-16 w-full rounded-xl text-center focus:outline-none inline-block absolute left-0 px-8 " v-model="state.name" />
     </div>
     <div class="bg-white shadow-xl rounded-xl shadow-indigo-500/50 mt-8 mb-4 pt-4 pb-8 pl-4 pr-8 relative">
-      <!-- 标题 -->
-       <!-- 奇技淫巧：用span的min-width撑开父元素，并设置内容和input一样，里面的input设置的width:100%就可以随内容撑大 -->
-      <!-- <div class="absolute -top-12 left-0">
-        <span class="min-w-56 inline-block text-center font-bold text-2xl px-8">{{state.name}}</span>
-        <input type="text" class=" text-indigo-500 font-bold text-2xl h-16 w-full rounded-xl text-center focus:outline-none inline-block absolute left-0 px-8 " v-model="state.name" />
-      </div> -->
-      <!-- 图表 -->
       <draggable 
       id = 'graph'
       class="z-10"
@@ -75,7 +68,7 @@
         <button 
         title="增加行"
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
-        transition duration-500 ease transform hover:scale-125 hover:rotate-360">
+        transition duration-500 ease transform hover:scale-125 hover:rotate-180">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
           </svg>
@@ -86,7 +79,7 @@
         <button 
         title="减少行"
         class="rounded-full bg-indigo-500 text-white w-12 h-12 p-2 shadow-lg shadow-indigo-500/50
-        transition duration-500 ease transform hover:scale-125 hover:rotate-360">
+        transition duration-500 ease transform hover:scale-125 hover:rotate-180">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
           </svg>
@@ -112,7 +105,7 @@
           </svg>
         </button>
       </div>
-      <input id="file" type="file" accept="image/*" class=" opacity-0 absolute bottom-1/2 translate-y-1/2 right-2 w-12 h-12 z-0" @change="getFile">
+      <input id="file" type="file" accept="image/*" class=" opacity-0 absolute bottom-1/2 translate-y-1/2 right-2 w-12 h-12 z-0" @change="getFile" multiple="multiple">
     </div>
   </div>
 </template>
@@ -219,6 +212,7 @@ function download() {
 
 function upload() {
   let file = document.querySelector('#file');
+  file.value = null;
   file.click();
 }
 
@@ -226,19 +220,24 @@ function getFile(e) {
   console.log(`文件名称：${e.target.value}`);
   // 使用fileReader来读取文件，绕过浏览器安全策略
   let input = document.querySelector('#file');
-	let fileReader=new FileReader(),fileType=input.files[0].type;
-  let lastId = state.pool[state.pool.length - 1] ? state.pool[state.pool.length - 1].id + 1 : 0
-	fileReader.onload=function(){
-		if(/^image\/[jpg|png|gif]/.test(fileType)){
-			  state.pool.push({
-      id:lastId,
-      src:this.result
-    })
-		}
-	}
-	console.log(input.files[0]);
-	//base64方式读取：图片等文件通用读取方式
-	fileReader.readAsDataURL(input.files[0]);
+  for(let i = 0; i < input.files.length; i++) {
+    let fileReader=new FileReader()
+    let fileType = input.files[i].type;
+    let lastId = state.pool[state.pool.length - 1] ? state.pool[state.pool.length - 1].id + 1 : 0
+    fileReader.onload=function(){
+      if(/^image\/[jpg|png|gif]/.test(fileType)){
+        state.pool.push(
+          {
+            id:lastId,
+            src:this.result
+          }
+        )
+      }
+    }
+    console.log(input.files[i]);
+    //base64方式读取：图片等文件通用读取方式
+    fileReader.readAsDataURL(input.files[i]);
+  }
 }
 
 // function changeColor() {

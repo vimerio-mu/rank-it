@@ -1,7 +1,7 @@
 <template>
   <div class=" min-h-28 flex flex-row">
     <div contenteditable="true" ref="container"
-    class="relative w-44 min-h-28 text-center text-3xl text-white flex items-center justify-center border-1 border-black overflow-hidden outline-none" >
+    class="relative md:w-44 w-24 min-h-28 text-center text-3xl text-white flex items-center justify-center border-1 border-black overflow-hidden outline-none" >
       <span class=" overflow-hidden">{{name}}</span>
       <!-- 颜色选择器 -->
       <button class="absolute -bottom-6 -right-6 duration-500 hover:bottom-0 hover:right-0 " >
@@ -47,7 +47,6 @@ export default {
     data:Array
   },
   setup(props) {
-    let output = reactive(false)
     const container = ref(null)
     // 预定义颜色
     const predefineColors = ref([
@@ -71,21 +70,16 @@ export default {
     ])
     // 传入左边名称框的颜色
     onMounted(() => {
-      output = true
       container.value.style.backgroundColor = ` ${props.color ? props.color : '#000000'} `;
       })
     onUpdated(() => {
-      output = true
       container.value.style.backgroundColor = ` ${props.color ? props.color : '#000000'} `;
     })
     function setColor(value) {
-      console.log(value)
-      console.log(container.value.style)
       container.value.style.backgroundColor = value
     }
     return {
       container,
-      output,
       setColor,
       predefineColors
     } 
@@ -96,5 +90,4 @@ export default {
 </script>
 
 <style>
-
 </style>

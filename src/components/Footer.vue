@@ -13,7 +13,7 @@
    <el-drawer
     v-model="state.openDrawer"
     direction="ltr"
-    size="30%"
+    size="50%"
   >
   <div class="px-4 text-indigo-900 text-light text-lg text-left leading-8">
       <div class="mb-8">
