@@ -1,0 +1,32 @@
+export default [
+  {
+      id:0,
+      name:'S',
+      color:'#b454fd',
+      data:[]
+    },
+  {
+      id:1,
+      name:'A',
+      color:'#6366f1',
+      data:[]
+  },
+  {
+      id:2,
+      name:'B',
+      color:'#4b8dfe',
+      data:[]
+  },
+  {
+      id:3,
+      name:'C',
+      color:'#04c6e2',
+      data:[]
+  },
+  {
+      id:4,
+      name:'D',
+      color:'#02deba',
+      data:[]
+  },
+]

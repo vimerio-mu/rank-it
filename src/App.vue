@@ -1,5 +1,4 @@
 <script setup>
-import Header from './components/Header.vue'
 import Graph from './components/Graph.vue'
 import Footer from './components/Footer.vue'
 </script>
